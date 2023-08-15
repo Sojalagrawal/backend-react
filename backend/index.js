@@ -3,6 +3,12 @@ const express = require("express");
 const app=express();
 connectToMongo();
 
+//for req.body
+app.use(express.json());
+
+//Available Routes
+app.use('/api/auth',require('./routes/auth'));
+app.use('/api/notes',require('./routes/notes'));
 
 
 
@@ -10,7 +16,6 @@ app.get("/",function(req,res){
     res.send("home");
 });
 
-
-app.listen(3000,function(){
-     console.log("Server started on port 3000");
+app.listen(5000,function(){
+     console.log("Server started on port 5000");
 });
